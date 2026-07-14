@@ -55,7 +55,40 @@ public class TicketBooking {
         System.out.println("Ticket Price : Rs." + event.getTicketPrice());
 
 
+        System.out.print("\nDo you want to book a ticket for this event? (yes/no): ");
+        String answer = input.nextLine();
 
+
+
+        if(answer.equalsIgnoreCase("yes")){
+            customer.bookTicket();
+            System.out.print("Enter Seat Number: ");
+            String seat = input.nextLine();
+
+            Ticket ticket = new Ticket(1001, seat, event);
+            System.out.println("\nTicket Details");
+            System.out.println("Ticket ID : " + ticket.getTicketId());
+            System.out.println("Seat Number : " + ticket.getSeatNo());
+            Payment payment = new Payment(event.getTicketPrice());
+            payment.makePayment();
+
+
+
+            System.out.print("\nDo you want to cancel the ticket? (yes/no): ");
+            String cancel = input.nextLine();
+
+
+
+            if(cancel.equalsIgnoreCase("yes")){
+                customer.cancelTicket();
+            }
+            else{
+                System.out.println("Thank you for booking with us.");
+            }
+        }
+        else{
+            System.out.println("Booking Cancelled.");
+        }
        
 
 }
