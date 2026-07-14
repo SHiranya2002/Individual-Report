@@ -9,35 +9,13 @@ public class TicketBooking {
 
         try {
             Customer customer = createCustomer(input);
-
-            customer.register();
-            customer.login();
-            System.out.println();
-            customer.searchEvent();
+            initializeCustomer(customer);
 
             Event event = createEvent();
-            System.out.println("\n----Event Details----");
-            event.displayEventDetails();
+            displayEvent(event);
 
-            String answer = readYesNo(input, "\nDo you want to book a ticket for this event? (yes/no): ");
-
-            if (answer.equalsIgnoreCase("yes")) {
-                String seat = readSeatNumber(input, "Enter Seat Number: ");
-                int ticketAmount = readPositiveInt(input, "Enter Number of Tickets: ");
-
-                Ticket ticket = new Ticket(1001, seat, event);
-                System.out.println("\nTicket Details");
-                ticket.displayTicketDetails();
-
-                double totalAmount = event.calculateTotalCost(ticketAmount);
-                Payment payment = new Payment(totalAmount);
-                payment.makePayment();
-                customer.bookTicket();
-
-                String cancel = readYesNo(input, "\nDo you want to cancel the ticket? (yes/no): ");
-                if (cancel.equalsIgnoreCase("yes")) {
-                    customer.cancelTicket();
-                }
+            if (confirm(input, "\nDo you want to book a ticket for this event? (yes/no): ")) {
+                processBooking(input, customer, event);
             } else {
                 System.out.println("Booking Cancelled.");
             }
@@ -67,6 +45,40 @@ public class TicketBooking {
                 "Nelum Pokuna Theatre",
                 100,
                 3500.00);
+    }
+
+    private static void initializeCustomer(Customer customer) {
+        customer.register();
+        customer.login();
+        System.out.println();
+        customer.searchEvent();
+    }
+
+    private static void displayEvent(Event event) {
+        System.out.println("\n----Event Details----");
+        event.displayEventDetails();
+    }
+
+    private static boolean confirm(Scanner input, String prompt) {
+        return readYesNo(input, prompt).equalsIgnoreCase("yes");
+    }
+
+    private static void processBooking(Scanner input, Customer customer, Event event) {
+        String seat = readSeatNumber(input, "Enter Seat Number: ");
+        int ticketAmount = readPositiveInt(input, "Enter Number of Tickets: ");
+
+        Ticket ticket = new Ticket(1001, seat, event);
+        System.out.println("\nTicket Details");
+        ticket.displayTicketDetails();
+
+        double totalAmount = event.calculateTotalCost(ticketAmount);
+        Payment payment = new Payment(totalAmount);
+        payment.makePayment();
+        customer.bookTicket();
+
+        if (confirm(input, "\nDo you want to cancel the ticket? (yes/no): ")) {
+            customer.cancelTicket();
+        }
     }
 
     private static int readPositiveInt(Scanner input, String prompt) {

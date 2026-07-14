@@ -1,18 +1,18 @@
 public class Event {
-    private int eventId;
-    private String eventName;
-    private String eventDate;
-    private String eventLocation;
-    private int avaiableTickets;
-    private double ticketPrice;
+    private final int eventId;
+    private final String eventName;
+    private final String eventDate;
+    private final String eventLocation;
+    private final int avaiableTickets;
+    private final double ticketPrice;
 
     public Event(int eventId, String eventName, String eventDate, String eventLocation, int avaiableTickets, double ticketPrice) {
-        setEventId(eventId);
-        setEventName(eventName);
-        setEventDate(eventDate);
-        setEventLocation(eventLocation);
-        setAvaiableTickets(avaiableTickets);
-        setTicketPrice(ticketPrice);
+        this.eventId = validateEventId(eventId);
+        this.eventName = validateEventName(eventName);
+        this.eventDate = validateEventDate(eventDate);
+        this.eventLocation = validateEventLocation(eventLocation);
+        this.avaiableTickets = validateAvailableTickets(avaiableTickets);
+        this.ticketPrice = validateTicketPrice(ticketPrice);
     }
 
     public int getEventId() {
@@ -52,45 +52,45 @@ public class Event {
         return ticketPrice * quantity;
     }
 
-    private void setEventId(int eventId) {
+    private static int validateEventId(int eventId) {
         if (eventId <= 0) {
             throw new IllegalArgumentException("Event ID must be greater than zero.");
         }
-        this.eventId = eventId;
+        return eventId;
     }
 
-    private void setEventName(String eventName) {
+    private static String validateEventName(String eventName) {
         if (eventName == null || eventName.trim().isEmpty()) {
             throw new IllegalArgumentException("Event name cannot be empty.");
         }
-        this.eventName = eventName.trim();
+        return eventName.trim();
     }
 
-    private void setEventDate(String eventDate) {
+    private static String validateEventDate(String eventDate) {
         if (eventDate == null || eventDate.trim().isEmpty()) {
             throw new IllegalArgumentException("Event date cannot be empty.");
         }
-        this.eventDate = eventDate.trim();
+        return eventDate.trim();
     }
 
-    private void setEventLocation(String eventLocation) {
+    private static String validateEventLocation(String eventLocation) {
         if (eventLocation == null || eventLocation.trim().isEmpty()) {
             throw new IllegalArgumentException("Event location cannot be empty.");
         }
-        this.eventLocation = eventLocation.trim();
+        return eventLocation.trim();
     }
 
-    private void setAvaiableTickets(int avaiableTickets) {
+    private static int validateAvailableTickets(int avaiableTickets) {
         if (avaiableTickets < 0) {
             throw new IllegalArgumentException("Available tickets cannot be negative.");
         }
-        this.avaiableTickets = avaiableTickets;
+        return avaiableTickets;
     }
 
-    private void setTicketPrice(double ticketPrice) {
+    private static double validateTicketPrice(double ticketPrice) {
         if (ticketPrice <= 0) {
             throw new IllegalArgumentException("Ticket price cannot be negative or zero.");
         }
-        this.ticketPrice = ticketPrice;
+        return ticketPrice;
     }
 }

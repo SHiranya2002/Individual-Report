@@ -1,8 +1,8 @@
 public class Payment {
-    private double amount;
+    private final double amount;
 
     public Payment(double amount) {
-        setAmount(amount);
+        this.amount = validateAmount(amount);
     }
 
     public double getAmount() {
@@ -17,10 +17,10 @@ public class Payment {
         System.out.println("Payment of amount " + amount + " made successfully");
     }
 
-    private void setAmount(double amount) {
+    private static double validateAmount(double amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("Payment amount cannot be negative or zero.");
         }
-        this.amount = amount;
+        return amount;
     }
 }
