@@ -1,5 +1,3 @@
-package versionA-traditional;
-
 public class Ticket {
     private int ticketId;
     private String ticketNo;
