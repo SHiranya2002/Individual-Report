@@ -1,0 +1,1 @@
+This folder contains the UML Diagrams of my Ticket Booking Management System. There is a use case diagram, activity diagrams and a class diagram for the system.

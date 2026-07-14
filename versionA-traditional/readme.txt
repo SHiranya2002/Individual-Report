@@ -1,0 +1,1 @@
+This folder contains the manual coding of the Ticket Booking Management System. The manual coding part was done without the use of AI and with moderate complexity.

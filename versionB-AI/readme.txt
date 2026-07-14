@@ -1,0 +1,1 @@
+This folder contains the AI generated code for the Ticket Booking Management System. Ai was used for validation and more structured code development.
