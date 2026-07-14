@@ -61,7 +61,7 @@ public class TicketBooking {
 
 
         if(answer.equalsIgnoreCase("yes")){
-            customer.bookTicket();
+            
             System.out.print("Enter Seat Number: ");
             String seat = input.nextLine();
 
@@ -71,6 +71,7 @@ public class TicketBooking {
             System.out.println("Seat Number : " + ticket.getSeatNo());
             Payment payment = new Payment(event.getTicketPrice());
             payment.makePayment();
+            customer.bookTicket();
 
 
 
