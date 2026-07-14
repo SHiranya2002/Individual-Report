@@ -1,0 +1,3 @@
+Improve the code using data validation.Ticket price ticket amout cannot be negative or zero.
+The mobile number should not exceed 10 digits and validate all the user inputs.
+Without changing the overall functionality improve the code structure according to OOP concepts
