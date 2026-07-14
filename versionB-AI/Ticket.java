@@ -1,20 +1,33 @@
 public class Ticket {
     private int ticketId;
     private String seatNo;
-   private Event event;
+    private Event event;
 
     public Ticket(int ticketId, String seatNo, Event event) {
-        this.ticketId = ticketId;
-        this.seatNo = seatNo;
+        setTicketId(ticketId);
+        setSeatNo(seatNo);
         this.event = event;
     }
 
     public int getTicketId() {
         return ticketId;
     }
-    
+
     public String getSeatNo() {
         return seatNo;
     }
 
+    private void setTicketId(int ticketId) {
+        if (ticketId <= 0) {
+            throw new IllegalArgumentException("Ticket ID must be greater than zero.");
+        }
+        this.ticketId = ticketId;
+    }
+
+    private void setSeatNo(String seatNo) {
+        if (seatNo == null || seatNo.trim().isEmpty()) {
+            throw new IllegalArgumentException("Seat number cannot be empty.");
+        }
+        this.seatNo = seatNo.trim();
+    }
 }
