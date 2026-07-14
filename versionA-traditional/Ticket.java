@@ -1,24 +1,38 @@
 public class Ticket {
     private int ticketId;
-    private String ticketNo;
+    private String seatNo;
     private double ticketPrice;
+    private boolean isAvailable;
 
-    public Ticket(int ticketId, String ticketNo, double ticketPrice) {
+    public Ticket(int ticketId, String seatNo, double ticketPrice, boolean isAvailable) {
         this.ticketId = ticketId;
-        this.ticketNo = ticketNo;
+        this.seatNo = seatNo;
         this.ticketPrice = ticketPrice;
+        this.isAvailable = isAvailable;
     }
 
     public int getTicketId() {
         return ticketId;
     }
-
-    public String getTicketNo() {
-        return ticketNo;
+    
+    public String getSeatNo() {
+        return seatNo;
     }
 
     public double getTicketPrice() {
         return ticketPrice;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void reserve() {
+        isAvailable = false;
+    }
+
+    public void cancelReservation() {
+        isAvailable = true;
     }
 
 }
