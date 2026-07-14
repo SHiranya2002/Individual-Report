@@ -83,12 +83,12 @@ public class TicketBooking {
             if(cancel.equalsIgnoreCase("yes")){
                 customer.cancelTicket();
             }
-            else{
-                System.out.println("Thank you for booking with us.");
-            }
+            
+
         }
         else{
             System.out.println("Booking Cancelled.");
+            System.out.println("Thank you for booking with us.");
         }
        
 
