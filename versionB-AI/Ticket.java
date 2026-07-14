@@ -17,6 +17,15 @@ public class Ticket {
         return seatNo;
     }
 
+    public Event getEvent() {
+        return event;
+    }
+
+    public void displayTicketDetails() {
+        System.out.println("Ticket ID : " + ticketId);
+        System.out.println("Seat Number : " + seatNo);
+    }
+
     private void setTicketId(int ticketId) {
         if (ticketId <= 0) {
             throw new IllegalArgumentException("Ticket ID must be greater than zero.");

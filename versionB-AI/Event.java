@@ -39,6 +39,19 @@ public class Event {
         return ticketPrice;
     }
 
+    public void displayEventDetails() {
+        System.out.println("Event ID : " + eventId);
+        System.out.println("Event Name : " + eventName);
+        System.out.println("Date : " + eventDate);
+        System.out.println("Location : " + eventLocation);
+        System.out.println("Available Tickets : " + avaiableTickets);
+        System.out.println("Ticket Price : Rs." + ticketPrice);
+    }
+
+    public double calculateTotalCost(int quantity) {
+        return ticketPrice * quantity;
+    }
+
     private void setEventId(int eventId) {
         if (eventId <= 0) {
             throw new IllegalArgumentException("Event ID must be greater than zero.");

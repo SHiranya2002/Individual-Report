@@ -62,10 +62,14 @@ public class User {
     }
 
     public void login() {
-        System.out.println("User " + userName + " logged in");
+        printAction("logged in");
     }
 
     public void register() {
-        System.out.println("User " + userName + " registered");
+        printAction("registered");
+    }
+
+    private void printAction(String action) {
+        System.out.println("User " + userName + " " + action);
     }
 }

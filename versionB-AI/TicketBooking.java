@@ -8,34 +8,16 @@ public class TicketBooking {
         System.out.println("TICKET BOOKING MANAGEMENT SYSTEM");
 
         try {
-            int customerId = readPositiveInt(input, "Enter Customer ID: ");
-            String customerName = readRequiredText(input, "Enter Customer Name: ");
-            String customerEmail = readEmail(input, "Enter Email: ");
-            String password = readPassword(input, "Enter Password: ");
-            String phone = readPhoneNumber(input, "Enter Phone Number: ");
-
-            Customer customer = new Customer(customerId, customerName, customerEmail, password, phone);
+            Customer customer = createCustomer(input);
 
             customer.register();
             customer.login();
             System.out.println();
             customer.searchEvent();
 
-            Event event = new Event(
-                    101,
-                    "Naadanu Concert",
-                    "20/08/2026",
-                    "Nelum Pokuna Theatre",
-                    100,
-                    3500.00);
-
+            Event event = createEvent();
             System.out.println("\n----Event Details----");
-            System.out.println("Event ID : " + event.getEventId());
-            System.out.println("Event Name : " + event.getEventName());
-            System.out.println("Date : " + event.getEventDate());
-            System.out.println("Location : " + event.getEventLocation());
-            System.out.println("Available Tickets : " + event.getAvaiableTickets());
-            System.out.println("Ticket Price : Rs." + event.getTicketPrice());
+            event.displayEventDetails();
 
             String answer = readYesNo(input, "\nDo you want to book a ticket for this event? (yes/no): ");
 
@@ -45,10 +27,9 @@ public class TicketBooking {
 
                 Ticket ticket = new Ticket(1001, seat, event);
                 System.out.println("\nTicket Details");
-                System.out.println("Ticket ID : " + ticket.getTicketId());
-                System.out.println("Seat Number : " + ticket.getSeatNo());
+                ticket.displayTicketDetails();
 
-                double totalAmount = event.getTicketPrice() * ticketAmount;
+                double totalAmount = event.calculateTotalCost(ticketAmount);
                 Payment payment = new Payment(totalAmount);
                 payment.makePayment();
                 customer.bookTicket();
@@ -67,6 +48,25 @@ public class TicketBooking {
         }
 
         System.out.println("Thank you for booking with us.");
+    }
+
+    private static Customer createCustomer(Scanner input) {
+        int customerId = readPositiveInt(input, "Enter Customer ID: ");
+        String customerName = readRequiredText(input, "Enter Customer Name: ");
+        String customerEmail = readEmail(input, "Enter Email: ");
+        String password = readPassword(input, "Enter Password: ");
+        String phone = readPhoneNumber(input, "Enter Phone Number: ");
+        return new Customer(customerId, customerName, customerEmail, password, phone);
+    }
+
+    private static Event createEvent() {
+        return new Event(
+                101,
+                "Naadanu Concert",
+                "20/08/2026",
+                "Nelum Pokuna Theatre",
+                100,
+                3500.00);
     }
 
     private static int readPositiveInt(Scanner input, String prompt) {

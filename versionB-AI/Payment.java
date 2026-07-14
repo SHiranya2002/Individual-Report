@@ -5,7 +5,15 @@ public class Payment {
         setAmount(amount);
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
     public void makePayment() {
+        displayPaymentDetails();
+    }
+
+    public void displayPaymentDetails() {
         System.out.println("Payment of amount " + amount + " made successfully");
     }
 

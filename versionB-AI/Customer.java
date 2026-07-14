@@ -21,6 +21,11 @@ public class Customer extends User {
         this.customerPhoneNo = phone;
     }
 
+    public void displayCustomerDetails() {
+        System.out.println("Customer Name: " + getUserName());
+        System.out.println("Phone Number: " + customerPhoneNo);
+    }
+
     public void searchEvent() {
         System.out.println("Searching for an event");
     }
