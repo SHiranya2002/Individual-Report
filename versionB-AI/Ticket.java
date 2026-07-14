@@ -37,6 +37,10 @@ public class Ticket {
         if (seatNo == null || seatNo.trim().isEmpty()) {
             throw new IllegalArgumentException("Seat number cannot be empty.");
         }
-        this.seatNo = seatNo.trim();
+        String trimmedSeat = seatNo.trim();
+        if (!trimmedSeat.matches("[A-Za-z0-9-]+")) {
+            throw new IllegalArgumentException("Seat number should be letters, numbers, or dashes only.");
+        }
+        this.seatNo = trimmedSeat;
     }
 }

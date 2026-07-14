@@ -38,6 +38,9 @@ public class User {
         if (userName == null || userName.trim().isEmpty()) {
             throw new IllegalArgumentException("User name cannot be empty.");
         }
+        if (!userName.trim().matches("[A-Za-z\\s]+")) {
+            throw new IllegalArgumentException("User name should contain only letters and spaces.");
+        }
         this.userName = userName.trim();
     }
 
@@ -45,10 +48,11 @@ public class User {
         if (userEmail == null || userEmail.trim().isEmpty()) {
             throw new IllegalArgumentException("Email cannot be empty.");
         }
-        if (!userEmail.contains("@") || !userEmail.contains(".")) {
+        String email = userEmail.trim();
+        if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
             throw new IllegalArgumentException("Please enter a valid email address.");
         }
-        this.userEmail = userEmail.trim();
+        this.userEmail = email;
     }
 
     private void setUserPassword(String userPassword) {
