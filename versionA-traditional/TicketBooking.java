@@ -84,13 +84,12 @@ public class TicketBooking {
                 customer.cancelTicket();
             }
             
-
         }
         else{
             System.out.println("Booking Cancelled.");
-            System.out.println("Thank you for booking with us.");
+            
         }
-       
+       System.out.println("Thank you for booking with us.");
 
 }
 }
