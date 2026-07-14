@@ -37,5 +37,26 @@ public class TicketBooking {
         customer.searchEvent();
 
 
+        Event event = new Event(
+
+                101,
+                "Naadanu Concert",
+                "20/08/2026",
+                "Nelum Pokuna Theatre",
+                100,
+                3500.00);
+
+        System.out.println("\n----Event Details----");
+        System.out.println("Event ID : " + event.getEventId());
+        System.out.println("Event Name : " + event.getEventName());
+        System.out.println("Date : " + event.getEventDate());
+        System.out.println("Location : " + event.getEventLocation());
+        System.out.println("Available Tickets : " + event.getAvaiableTickets());
+        System.out.println("Ticket Price : Rs." + event.getTicketPrice());
+
+
+
+       
+
 }
 }
